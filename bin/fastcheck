@@ -8,6 +8,7 @@ check() {
 		passing=false
 	fi
 }
+echo "Running quick checks..."
 
 if [[ $* == *--fix* ]]; then
 	echo "Autocorrecting"
