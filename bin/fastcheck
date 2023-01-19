@@ -3,18 +3,21 @@
 set -e
 passing=true
 
-if [[ $* == *--fix* ]]; then
-	echo "Autocorrecting"
-	check bundle exec rubocop -A -c .rubocop.yml
-	check npx stylelint --fix "**/*.scss"
-else
-	echo "Note: to autocorrect, run with --fix"
-	check bundle exec rubocop -D -c .rubocop.yml --fail-fast
-	check npx stylelint "**/*.scss"
-fi
-
 check() {
 	if [ $? -ne 0 ]; then
 		passing=false
 	fi
 }
+
+if [[ $* == *--fix* ]]; then
+	echo "Autocorrecting"
+	bundle exec rubocop -A -c .rubocop.yml
+	check
+	npx stylelint --fix "**/*.scss"
+else
+	echo "Note: to autocorrect, run with --fix"
+	check bundle exec rubocop -D -c .rubocop.yml --fail-fast
+	check
+	check npx stylelint "**/*.scss"
+fi
+check
