@@ -21,3 +21,5 @@ else
 	check npx stylelint "**/*.scss"
 fi
 check
+bundle exec brakeman -q -z --no-summary --no-pager
+check
