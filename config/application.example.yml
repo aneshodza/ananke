@@ -1,1 +1,5 @@
 PORT: 3000
+
+test:
+  # SELENIUM_DRIVER: 'selenium_chrome'
+  SELENUM_DRIVER: 'selenium_chrome_headless'
