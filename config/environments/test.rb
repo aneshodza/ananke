@@ -57,4 +57,8 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+  
+  config.action_controller.action_on_unpermitted_parameters = :raise
+  config.i18n.exception_handler = Proc.new { |exception| raise exception.to_exception }
+  config.active_record.verbose_query_logs = true
 end

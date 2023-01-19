@@ -21,6 +21,15 @@ FileUtils.chdir APP_ROOT do
   # unless File.exist?("config/database.yml")
   #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
   # end
+  
+  unless File.exist?('.git/hooks/pre-push')
+    system 'ln -s ../../bin/fastcheck .git/hooks/pre-push'
+  end
+
+  puts "\n== Copying sample files =="
+  unless File.exist?('config/application.yml')
+    system! 'cp config/application.example.yml config/application.yml'
+  end
 
   puts "\n== Preparing database =="
   system! "bin/rails db:prepare"
