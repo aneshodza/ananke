@@ -15,5 +15,7 @@ module Ananke
 
     config.time_zone = 'Zurich'
     config.i18n.default_locale = :en
+
+    config.generators.test_path = 'spec'
   end
 end
