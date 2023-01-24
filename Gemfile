@@ -82,3 +82,5 @@ gem 'figaro', '~> 1.2'
 gem "brakeman", "~> 5.4"
 
 gem "devise", "~> 4.8"
+
+gem "faker", "~> 3.1"

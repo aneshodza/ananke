@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr class="user-list-row">
+        <td scope="row" class="pfp-icon">
+          <% if user.pfp_url.nil? %>
+            <%= image_tag "default_pfp.png" %></th>
+        <% else %>
+          <img src="<%= user.pfp_url %>" alt="pfp" class="pfp">
+        <% end %>
+        <td><%= "#{user.first_name} #{user.last_name}" %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
