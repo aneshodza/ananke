@@ -11,6 +11,8 @@ require 'capybara/rails'
 require 'selenium/webdriver'
 require 'super_diff/rspec-rails'
 
+require 'factory_bot_rails'
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -18,6 +20,8 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.use_transactional_fixtures = true
