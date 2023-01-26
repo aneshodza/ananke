@@ -25,9 +25,9 @@ blocks:
   - name: Tests
     task:
       jobs:
-        - name: 'Job #1'
+        - name: Specs
           commands:
             - bundle exec rspec
-        - name: 'Job #2'
+        - name: Lint
           commands:
             - bin/fastcheck
