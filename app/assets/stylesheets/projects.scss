@@ -1,0 +1,19 @@
+.project-table {
+    .actions {
+        display: flex;
+        flex-direction: row;
+        a {
+            color: black;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        button {
+            background-color: white;
+            border: none;
+            padding: 0;
+        }
+        .bi-trash-fill {
+            color: #D20000;
+        }
+    }
+}
