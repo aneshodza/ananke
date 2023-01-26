@@ -1,0 +1,63 @@
+version: v1.0
+name: ananke
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+
+auto_cancel:
+  running:
+    when: "true"
+
+blocks:
+  - name: cache
+    execution_time_limit:
+      minutes: 15
+    dependencies: []
+    task:
+      secrets:
+        - name: ananke
+      jobs:
+        - name: cache
+          commands:
+            - checkout --use-cache
+            - "sem-version node $(grep nodejs .tool-versions|cut -d' ' -f2)"
+            - yarn global add node-gyp
+            - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-develop,gems-master
+            - cache restore yarn-cache-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),yarn-cache-$SEMAPHORE_GIT_BRANCH,yarn-cache-develop,yarn-cache-master
+            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-develop,node-modules-master
+            - bundle install --deployment -j 4 --path vendor/bundle
+            - bin/yarn install --cache-folder ~/.cache/yarn
+            - cache store
+  - name: tests
+    execution_time_limit:
+      minutes: 10
+    dependencies: ['cache']
+    task:
+      secrets:
+        - name: ananke
+      env_vars:
+        - name: DATABASE_URL
+          value: postgresql://postgres@localhost/test?encoding=utf8
+        - name: RAILS_ENV
+          value: test
+      prologue:
+        commands:
+          - checkout --use-cache
+          - "sem-version node $(grep nodejs .tool-versions|cut -d' ' -f2)"
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-develop,gems-master
+          - cache restore yarn-cache-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),yarn-cache-$SEMAPHORE_GIT_BRANCH,yarn-cache-develop,yarn-cache-master
+          - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-develop,node-modules-master
+          - bundle install --deployment --path vendor/bundle
+          - bin/yarn install --cache-folder ~/.cache/yarn
+          - sem-service start postgres
+          - cp config/application.example.yml config/application.yml
+          - bundle exec rails db:create db:schema:load
+          - bundle exec rake assets:precompile
+      jobs:
+        - name: rspec
+          commands:
+            - bundle exec rspec
+        - name: linters
+          commands:
+            - bin/fastcheck
