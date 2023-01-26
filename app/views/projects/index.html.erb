@@ -1,6 +1,6 @@
 <h1>Projects</h1>
 
-<table class="table">
+<table class="table project-table">
   <thead>
     <tr>
       <th scope="col"></th>
@@ -14,8 +14,16 @@
         <%= link_to project_path(project) do %>
           <td scope="row"><%= "##{idx+1}" %></td>
           <td><%= "#{project.name}" %></td>
-          <td>
-            <%= link_to "Show", project_path(project) %>
+          <td class="actions">
+            <%= link_to project_path(project) do %>
+              <i class="bi bi-eye-fill"></i>
+            <% end %>
+            <%= link_to edit_project_path(project) do %>
+              <i class="bi bi-pencil-square"></i>
+            <% end %>
+            <%= button_to project_path(project), method: :delete do %>
+              <i class="bi bi-trash-fill"></i>
+            <% end %>
           </td>
         <% end %>
       </tr>
