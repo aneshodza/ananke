@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe 'Register', type: :system do
-
+RSpec.describe 'Register' do
   it 'allows a user to register correctly' do
     expect do
       visit new_user_registration_path

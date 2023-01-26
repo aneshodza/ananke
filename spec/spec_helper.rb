@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'simplecov'
 
 SimpleCov.start 'rails' do
@@ -24,19 +26,18 @@ RSpec.configure do |config|
 
   config.filter_run_when_matching :focus
 
-  config.example_status_persistence_file_path = "spec/examples.txt"
+  config.example_status_persistence_file_path = 'spec/examples.txt'
 
   config.disable_monkey_patching!
 
   if config.files_to_run.one?
-    config.default_formatter = "doc"
+    config.default_formatter = 'doc'
   end
 
   config.profile_examples = 5
 
   config.order = :random
   Kernel.srand config.seed
-
 
   config.define_derived_metadata do |meta|
     meta[:aggregate_failures] = true

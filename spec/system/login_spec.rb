@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe 'Login', type: :system do
+RSpec.describe 'Login' do
   before do
     create(:user, email: 'anes.hodza04@gmail.com', password: '123456')
   end
