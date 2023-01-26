@@ -16,7 +16,7 @@ blocks:
     dependencies: []
     task:
       secrets:
-        - name: ananke
+        - name: PORT
       jobs:
         - name: cache
           commands:
@@ -35,7 +35,7 @@ blocks:
     dependencies: ['cache']
     task:
       secrets:
-        - name: ananke
+        - name: PORT
       env_vars:
         - name: DATABASE_URL
           value: postgresql://postgres@localhost/test?encoding=utf8
