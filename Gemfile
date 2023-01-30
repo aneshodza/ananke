@@ -84,3 +84,5 @@ gem 'brakeman', '~> 5.4'
 gem 'devise', '~> 4.8'
 
 gem 'faker', '~> 3.1'
+
+gem "nilify_blanks", "~> 1.4"
