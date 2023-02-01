@@ -2,9 +2,18 @@
 
 <%= render @project %>
 
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
+<%= link_to 'New Task', new_task_url(project: @project) %>
 
-  <%= button_to "Destroy this project", @project, method: :delete %>
+<%= render 'tasks/table' %>
+
+<div class="actions">
+  <%= link_to projects_path do %>
+    <i class="bi bi-arrow-bar-left"></i>
+  <% end %>
+  <%= link_to edit_project_path(@project) do %>
+    <i class="bi bi-pencil-square"></i>
+  <% end %>
+  <%= button_to project_path(@project), method: :delete do %>
+    <i class="bi bi-trash-fill"></i>
+  <% end %>
 </div>
