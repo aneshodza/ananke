@@ -4,7 +4,7 @@
 
 <%= link_to 'New Task', new_task_url(project: @project) %>
 
-<%= render 'tasks/table' %>
+<%= render 'tasks/table', tasks: @tasks %>
 
 <div class="actions">
   <%= link_to projects_path do %>

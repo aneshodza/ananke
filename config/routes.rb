@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'users', to: 'user#index'
+  get 'my-tasks', to: 'user#my_tasks', as: 'my_tasks'
 end
