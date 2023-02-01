@@ -147,6 +147,9 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
+    nilify_blanks (1.4.0)
+      activerecord (>= 4.0.0)
+      activesupport (>= 4.0.0)
     nio4r (2.5.8)
     nokogiri (1.14.0-arm64-darwin)
       racc (~> 1.4)
@@ -181,6 +184,10 @@ GEM
       activesupport (= 7.0.4.1)
       bundler (>= 1.15.0)
       railties (= 7.0.4.1)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -315,9 +322,11 @@ DEPENDENCIES
   figaro (~> 1.2)
   jbuilder
   jsbundling-rails
+  nilify_blanks (~> 1.4)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
+  rails-controller-testing (~> 1.0)
   redis (~> 4.0)
   rexml
   rspec-rails

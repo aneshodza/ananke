@@ -1,0 +1,7 @@
+<h1>My tasks</h1>
+
+<h2>Assigned to me</h2>
+<%= render 'tasks/table', tasks: @assigned_tasks %>
+
+<h2>Created by me</h2>
+<%= render 'tasks/table', tasks: @created_tasks %>

@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   resources :projects
+  resources :tasks
+
   devise_for :users,
              path: '',
              path_names: {
@@ -13,4 +15,5 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'users', to: 'user#index'
+  get 'my-tasks', to: 'user#my_tasks', as: 'my_tasks'
 end
