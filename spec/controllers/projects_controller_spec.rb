@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
   let(:valid_attributes) {
-    {name: "Project 1"}
+    {name: "Project 1", project_owner_id: create(:user).id}
   }
 
   let(:invalid_attributes) {
