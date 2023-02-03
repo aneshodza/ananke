@@ -57,6 +57,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :project_owner_id)
+      params.require(:project).permit(:name, :project_owner_id, :repo_link, :web_link)
     end
 end

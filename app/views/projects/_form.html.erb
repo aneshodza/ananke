@@ -5,6 +5,14 @@
       <%= f.text_field :name, class: "form-control" %>
     </div>
     <div class="form-group">
+      <%= f.label :repo_link %>
+      <%= f.text_field :repo_link, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :web_link %>
+      <%= f.text_field :web_link, class: "form-control" %>
+    </div>
+    <div class="form-group">
       <%= f.label :project_owner %>
       <%= f.select :project_owner_id,
         User.all.collect { |u| ["#{u.first_name} #{u.last_name}", u.id] },
