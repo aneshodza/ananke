@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_07_181411) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_210312) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_181411) do
     t.integer "assigned_user_id"
     t.integer "creator_id"
     t.boolean "finished", default: false
+    t.text "description"
   end
 
   create_table "tickets", force: :cascade do |t|

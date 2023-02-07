@@ -5,5 +5,5 @@ User.create!(email: '2@2.com', first_name: 'test', last_name: 'user', password: 
 
 project = Project.create!(name: 'Project 1', project_owner: user)
 
-Task.create!(name: 'Task 1', project: project, creator: user)
-Task.create!(name: 'Task 2', project: project, creator: user)
+Task.create!(name: 'Task 1', project: project, creator: user, description: 'Lorem')
+Task.create!(name: 'Task 2', project: project, creator: user, description: 'Ipsum')
