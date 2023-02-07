@@ -1,8 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @project %>
 
-<%= link_to 'New Task', new_task_url(project: @project) %>
+<%= link_to 'New Task', new_task_url(project: @project), class: "btn btn-primary" %>
 
 <%= render 'tasks/table', tasks: @tasks %>
 

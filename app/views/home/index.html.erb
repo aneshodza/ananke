@@ -7,6 +7,6 @@
   <%= link_to "Projects", projects_path %>
   <%= link_to "My tasks", my_tasks_path %>
 <% else %>
-  <%= button_to "Login", new_user_session_path %>
+  <%= link_to "Login", new_user_session_path %>
   <%= button_to "Sign up", new_user_registration_path %>
 <% end %>

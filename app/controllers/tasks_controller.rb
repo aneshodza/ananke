@@ -24,8 +24,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
-    redirect_to tasks_path
+    @task.finished = true
+    @task.save
+    redirect_to project_path(@task.project)
   end
 
   private
@@ -34,7 +35,8 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :project_id, :assigned_user_id, :creator_id)
+    params.require(:task).permit(:name, :finished, :project_id, :description,
+                                 :assigned_user_id, :creator_id)
   end
 end
 
