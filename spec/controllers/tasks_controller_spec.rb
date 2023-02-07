@@ -82,10 +82,12 @@ RSpec.describe TasksController, type: :controller do
   describe 'DELETE #destroy' do
     let!(:task) { create(:task) }
 
-    it 'deletes the task from the database' do
+    it 'doesnt delete but rather finish the task' do
       expect {
         delete :destroy, params: { id: task }
-      }.to change(Task, :count).by(-1)
+      }.to change(Task, :count).by(0)
+      task.reload
+      expect(task.finished).to eq true
     end
   end
 end

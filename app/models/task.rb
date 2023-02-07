@@ -7,4 +7,7 @@ class Task < ApplicationRecord
   validates :name, presence: true
   validates :creator, presence: true
   validates :project, presence: true
+
+  scope :finished, -> { where(finished: true) }
+  scope :unfinished, -> { where(finished: false) }
 end

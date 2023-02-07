@@ -6,7 +6,7 @@ class UserController < ApplicationController
   end
 
   def my_tasks
-    @assigned_tasks = Task.where(assigned_user: current_user)
-    @created_tasks = Task.where(creator: current_user)
+    @assigned_tasks = Task.unfinished.where(assigned_user: current_user)
+    @created_tasks = Task.unfinished.where(creator: current_user)
   end
 end
