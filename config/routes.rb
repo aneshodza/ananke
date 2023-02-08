@@ -12,7 +12,8 @@ Rails.application.routes.draw do
                sign_up: 'signup'
              },
              controllers: {
-               registrations: 'registrations'
+               registrations: 'registrations',
+               sessions: 'sessions'
              }
 
   root 'home#index'

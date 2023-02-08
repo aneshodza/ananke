@@ -1,12 +1,8 @@
 <h1>Welcome to Ananke</h1>
 <h2>Your next project manager</h2>
 
-<% if user_signed_in? %>
-  <p>Logged in as <%= current_user.email %></p>
-  <%= button_to "Logout", destroy_user_session_path, method: :delete %>
-  <%= link_to "Projects", projects_path %>
-  <%= link_to "My tasks", my_tasks_path %>
-<% else %>
-  <%= link_to "Login", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-<% end %>
+<p>Logged in as <%= current_user.email %></p>
+<%= button_to "Logout", destroy_user_session_path, method: :delete %>
+<%= link_to "Projects", projects_path %>
+<%= link_to "My tasks", my_tasks_path %>
+<%= link_to "Users", users_path %>

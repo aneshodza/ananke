@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
+  before(:each) do
+    sign_in create(:user)
+  end
+
   describe 'GET #show' do
     let(:task) { create(:task) }
 

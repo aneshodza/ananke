@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe UserController do
+  before(:each) do
+    sign_in user
+  end
+
   let!(:user) { create(:user) }
   let!(:another_user) { create(:user) }
 
