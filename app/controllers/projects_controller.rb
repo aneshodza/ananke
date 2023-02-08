@@ -43,12 +43,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
-
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to projects_url, alert: "Deleting projects is not allowed."
   end
 
   private
