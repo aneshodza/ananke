@@ -1,6 +1,10 @@
 <div id="<%= dom_id project %>">
   <h2><%= project.name %></h2>
   <h4>PO: <%= project.project_owner.email %></h4>
-  <%= link_to "Repository", absolute_link(project.repo_link), target: "_blank" %>
-  <%= link_to "Web", absolute_link(project.web_link), target: "_blank" %>
+  <% if project.repo_link %>
+    <%= link_to "Repository", absolute_link(project.repo_link), target: "_blank" %>
+  <% end %>
+  <% if project.web_link %>
+    <%= link_to "Web", absolute_link(project.web_link), target: "_blank" %>
+  <% end %>
 </div>

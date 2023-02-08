@@ -14,4 +14,11 @@ RSpec.describe 'Register' do
       click_button 'Sign up'
     end.to change(User, :count).by(1)
   end
+
+  it 'redirects if registration is disabled' do
+    ENV['REGISTERABLE'] = 'false'
+    visit new_user_registration_path
+    expect(page).to have_content('Registration is disabled')
+    ENV['REGISTERABLE'] = 'true'
+  end
 end
