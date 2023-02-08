@@ -10,4 +10,10 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.absolute_link('example.com')).to eq('https://example.com')
     end
   end
+
+  describe '#alerts_classes' do
+    it 'returns alert classes' do
+      expect(helper.alerts_classes('success')).to eq('alert alert-success alert-dismissible fade show')
+    end
+  end
 end
