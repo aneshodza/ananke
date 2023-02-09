@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
+  let(:user) { create(:user) }
   before(:each) do
-    sign_in create(:user)
+    sign_in user
   end
 
   describe 'GET #index' do
@@ -87,6 +88,15 @@ RSpec.describe ProjectsController, type: :controller do
     it 'redirects to the project page' do
       put :update, params: { id: project.id, project: project_params }
       expect(response).to redirect_to(project_url(project))
+    end
+
+    context 'when user is not PO' do
+      let(:user) { create(:user, :user) }
+      it 'doesnt update a project' do
+        put :update, params: { id: project.id, project: project_params.merge(name: 'new name') }
+        expect(assigns(:project).name).not_to eq('new name')
+        expect(assigns(:project).name).to eq(project.name)
+      end
     end
   end
 

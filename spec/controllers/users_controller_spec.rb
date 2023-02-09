@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe UserController do
+RSpec.describe UsersController do
   before(:each) do
     sign_in user
   end

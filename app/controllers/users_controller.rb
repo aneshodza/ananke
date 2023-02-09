@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class UserController < ApplicationController
+class UsersController < ApplicationController
+  authorize_resource
+
   def index
     @users = User.all
   end

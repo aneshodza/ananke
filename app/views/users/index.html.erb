@@ -1,6 +1,9 @@
 <h1>Users</h1>
 
-<%= link_to "New User", new_user_registration_path, class: "btn btn-primary" %>
+<% if can? :create, User %>
+  <%= link_to "New User", new_user_registration_path, class: "btn btn-primary" %>
+<% end %>
+<%= link_to "Back", root_path, class: "btn btn-primary" %>
 
 <table class="table">
   <thead>
