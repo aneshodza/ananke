@@ -7,10 +7,14 @@ class Ability
     return unless user
 
     can [:read], Project
-    can [:read, :update], Project, project_owner_id: user.id
+    can [:update], Project, project_owner_id: user.id
 
     can [:read, :update, :create], Task
-    can [:destroy], Task, project: { project_owner_id: user.id }
+    # :nocov:
+    can [:destroy], Task do |task|
+      task.project.project_owner == user
+    end
+    # :nocov:
 
     can [:read, :my_tasks], User
 

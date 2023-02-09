@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = 'You are not authorized to do that'
+    redirect_to request.referrer || root_path if exception.action == :destroy
   end
 
   protected
