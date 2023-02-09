@@ -1,13 +1,14 @@
 <div class="position-absolute top-0 start-50 translate-middle mt-5">
   <% if notice %>
-    <div class="alert alert-success" role="alert">
+    <div class="<%= alerts_classes('success') %>" role="alert">
       <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
   <% if alert %>
-    <div class="alert alert-danger" role="alert">
+    <div class="<%= alerts_classes('danger') %>" role="alert">
       <%= alert %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
-
 </div>
