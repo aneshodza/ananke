@@ -98,6 +98,15 @@ RSpec.describe ProjectsController, type: :controller do
         expect(assigns(:project).name).to eq(project.name)
       end
     end
+
+    context 'when user is PO' do
+      let(:user) { create(:user, :user) }
+      let!(:project) { create(:project, project_owner: user) }
+      it 'updates a project' do
+        put :update, params: { id: project.id, project: project_params.merge(name: 'new name') }
+        expect(assigns(:project).name).to eq('new name')
+      end
+    end
   end
 
   describe 'DELETE #destroy' do
