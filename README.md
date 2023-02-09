@@ -6,8 +6,8 @@
 
 
 
-## What is ananke?
-Ananke, coming from ancient greek religion, was seen as the personification of inevitability, compulsion and necessity.  
+## What is Ananke?
+Ananke, coming from ancient greek religion, was seen as the personification of inevitability, compulsion and necessity. Outside of mythology, the name is derived from **ἀνάγκη**, anankaie in latin letters, which means as much as "force, constraint or necessity".   
 And that's what Ananke is all about, making the finishing of your projects inevitable with proper managment and planning. It allows you to plan an agile project by creating POs, and assigning tasks to coders, giving you a proper overview of what has been done and what is yet to be done. At the moment there are not much features implemenented (only projects, tasks and users).
 
 ## How do I set it up?
