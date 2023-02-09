@@ -24,10 +24,10 @@ When you open up Ananke the first time it won't have a lot. That's because there
 ### Accounts
 Currently you can only create accounts from the command line (if you set `registerable` to `false`). It should soon also be possible to create accounts from the `/users` page, where we currently list all users.
 #### Permissions
-There is no permission system as of yet, but there will be one very soon and hopefully a system that makes permission handling easy.
+Permissions are currently very basic. There are normal users and there are admins. Admins can do a lot more that normal users, such as: Create users, rename them, change projects etc. Then the nromal users can also be POs of certain projects. If a user is a PO he can close tasks in that project and can also edit the project itself. Deleting the project is forbidden for any user, including the admin.
 
 ### Projects
-Obviously you can create projects. Each project should represent real life projects. You can assign both tasks and also a PO to the project. The PO doesn't change anything about the project (yet), the role is just given for visualisation.
+Obviously you can create projects. Each project should represent real life projects. You can assign both tasks and also a PO to the project. The PO used to only play a visual role in the project, but now actually has an impact on the permissions. Only the PO can close tasks in that project & rename them.
 
 ### Tasks
 Every project has tasks. Those can be e.g. "Implement proper CORS rules". Every task has a creator and an assigned user. It's the job of the assigned user to complete the task. Deleting tasks doesn't actually delete them, but just make them private so they don't get listed. That is done for security reasons (deleting tasks that are necessary to billing etc.)
