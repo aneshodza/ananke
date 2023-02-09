@@ -12,11 +12,12 @@ Rails.application.routes.draw do
                sign_up: 'signup'
              },
              controllers: {
-               registrations: 'registrations'
+               registrations: 'registrations',
+               sessions: 'sessions'
              }
 
   root 'home#index'
 
-  get 'users', to: 'user#index'
-  get 'my-tasks', to: 'user#my_tasks', as: 'my_tasks'
+  get 'users', to: 'users#index'
+  get 'my-tasks', to: 'users#my_tasks', as: 'my_tasks'
 end

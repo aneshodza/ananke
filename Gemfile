@@ -88,3 +88,5 @@ gem 'faker', '~> 3.1'
 gem "nilify_blanks", "~> 1.4"
 
 gem "rails-controller-testing", "~> 1.0"
+
+gem "cancancan", "~> 3.4"
