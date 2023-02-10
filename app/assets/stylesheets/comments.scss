@@ -1,0 +1,15 @@
+.comments-table {
+    thead {
+        border-bottom: black;
+    }
+
+    tbody {
+        tr {
+            border-bottom: transparent;
+        }
+
+        tr:nth-child(3n) {
+            border-bottom: black;
+        }
+    }
+}

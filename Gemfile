@@ -90,3 +90,5 @@ gem "nilify_blanks", "~> 1.4"
 gem "rails-controller-testing", "~> 1.0"
 
 gem "cancancan", "~> 3.4"
+
+gem "commonmarker", "~> 0.23.8"

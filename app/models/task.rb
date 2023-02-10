@@ -4,7 +4,8 @@ class Task < ApplicationRecord
     optional: true
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
 
-  has_one :project_owner, through: :project, source: :project_owner
+  has_one :project_owner, through: :project
+  has_many :comments, dependent: :destroy
 
   validates :name, presence: true
   validates :creator, presence: true

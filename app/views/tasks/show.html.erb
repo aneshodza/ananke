@@ -1,1 +1,12 @@
 <h1><%= "\"#{@task.name}\" ##{@task.id}" %></h1>
+
+<%= can?(:update, @task) ? link_to('Edit', edit_task_path(@task)) : '' %>
+<%= link_to 'Back', project_path(@task.project) %>
+<%= can?(:destroy, @task) ? link_to('Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' }) : '' %>
+
+<h4>Task Description</h4>
+<%= render_markdown(@task.description) %>
+
+<h4>Comments</h4>
+<%= link_to 'Add Comment', new_comment_url(task: @task), method: :get, class: 'btn btn-primary' %>
+<%= render 'comments/comment_table', comments: @task.comments %>

@@ -48,4 +48,19 @@
     button {
         margin-top: 10px;
     }
+    textarea {
+        height: 200px;
+    }
+}
+
+.pfp-icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        border: 1px solid #000;
+    }
 }

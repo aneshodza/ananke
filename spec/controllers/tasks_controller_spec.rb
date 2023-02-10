@@ -6,7 +6,7 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe 'GET #show' do
-    let(:task) { create(:task) }
+    let(:task) { create(:task, description: "# Lorem") }
 
     it 'assigns the requested task to @task' do
       get :show, params: { id: task }

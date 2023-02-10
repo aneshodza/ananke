@@ -1,0 +1,17 @@
+<tr>
+  <td scope="row" colspan="1" class="actions">
+    <% if can? :update, comment %>
+      <%= link_to edit_comment_path(comment) do %>
+        <i class="bi bi-pencil-square"></i>
+      <% end %>
+    <% end %>
+    <%= button_to comment_path(comment), method: :delete do %>
+      <i class="bi bi-trash-fill"></i>
+    <% end %>
+  </td>
+</tr>
+<tr>
+  <td scope="row" colspan="3">
+    <%= render_markdown(comment.content) %>
+  </td> 
+</tr>
