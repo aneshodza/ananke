@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   authorize_resource
 
   def show
+    @task.html_parsed_description = CommonMarker.render_html(@task.description)
   end
 
   def new

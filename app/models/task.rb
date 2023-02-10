@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  attr_accessor :html_parsed_description
+
   belongs_to :project
   belongs_to :assigned_user, class_name: 'User', foreign_key: 'assigned_user_id',
     optional: true
