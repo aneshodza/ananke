@@ -28,4 +28,10 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.safe_attributes).to eq(%w(href src alt))
     end
   end
+
+  describe '#markdown' do
+    it 'returns markdown' do
+      expect(helper.render_markdown('*test*')).to eq("<p><em>test</em></p>\n")
+    end
+  end
 end

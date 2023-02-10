@@ -5,5 +5,8 @@
 <%= can?(:destroy, @task) ? link_to('Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' }) : '' %>
 
 <h4>Task Description</h4>
-<%= sanitize(@task.html_parsed_description.html_safe,
-             tags: safe_tags, attributes: safe_attributes) %>
+<%= render_markdown(@task.description) %>
+
+<h4>Comments</h4>
+<%= link_to 'Add Comment', new_comment_url(task: @task), method: :get, class: 'btn btn-primary' %>
+<%= render 'comments/comment_table', comments: @task.comments %>

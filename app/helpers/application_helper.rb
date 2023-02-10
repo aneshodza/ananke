@@ -13,11 +13,21 @@ module ApplicationHelper
     "alert alert-#{type} alert-dismissible fade show"
   end
 
+  def render_markdown(markdown)
+    sanitize(markdown_to_html(markdown), tags: safe_tags, attributes: safe_attributes)
+  end
+
   def safe_tags
     SAFE_TAGS
   end
 
   def safe_attributes
     SAFE_ATTRIBUTES
+  end
+
+  private
+
+  def markdown_to_html(markdown)
+    CommonMarker.render_html(markdown)
   end
 end

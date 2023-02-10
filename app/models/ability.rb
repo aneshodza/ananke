@@ -10,11 +10,10 @@ class Ability
     can [:update], Project, project_owner_id: user.id
 
     can [:read, :update, :create], Task
-    # :nocov:
-    can [:destroy], Task do |task|
-      task.project.project_owner == user
-    end
-    # :nocov:
+    can [:destroy], Task, project_owner: user
+    
+    can [:read, :create], Comment
+    can [:update, :destroy], Comment, user_id: user.id
 
     can [:read, :my_tasks], User
 

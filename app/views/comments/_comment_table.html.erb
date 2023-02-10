@@ -1,0 +1,15 @@
+<table class="table comments-table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% comments.each do |comment| %>
+      <%= render 'users/user', user: comment.user, hide_email: true %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+  </tbody>
+</table>

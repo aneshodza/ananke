@@ -1,0 +1,10 @@
+<div class="full-screen-center">
+  <%= form_for(@comment, html: { class: "generic-form" }) do |f| %>
+    <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "form-control", placeholder: "Add a comment...", autofocus: true %>
+    </div>
+    <%= f.hidden_field :task_id, value: @comment.task_id %>
+    <%= f.submit submit_text, class: "btn btn-primary" %>
+  <% end %>
+</div>

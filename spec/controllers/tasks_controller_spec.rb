@@ -17,11 +17,6 @@ RSpec.describe TasksController, type: :controller do
       get :show, params: { id: task }
       expect(response).to render_template :show
     end
-
-    it 'renders the description as html' do
-      get :show, params: { id: task }
-      expect(assigns(:task).html_parsed_description).to eq "<h1>Lorem</h1>\n"
-    end
   end
 
   describe 'GET #new' do
