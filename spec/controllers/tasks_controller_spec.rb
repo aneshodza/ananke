@@ -6,7 +6,7 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe 'GET #show' do
-    let(:task) { create(:task) }
+    let(:task) { create(:task, description: "# Lorem") }
 
     it 'assigns the requested task to @task' do
       get :show, params: { id: task }
@@ -16,6 +16,11 @@ RSpec.describe TasksController, type: :controller do
     it 'renders the :show template' do
       get :show, params: { id: task }
       expect(response).to render_template :show
+    end
+
+    it 'renders the description as html' do
+      get :show, params: { id: task }
+      expect(assigns(:task).html_parsed_description).to eq "<h1>Lorem</h1>\n"
     end
   end
 

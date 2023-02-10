@@ -1,8 +1,9 @@
 <h1><%= "\"#{@task.name}\" ##{@task.id}" %></h1>
 
-<%= link_to 'Edit', edit_task_path(@task) %>
-<%= link_to 'Back', tasks_path %>
-<%= link_to 'Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= can?(:update, @task) ? link_to('Edit', edit_task_path(@task)) : '' %>
+<%= link_to 'Back', project_path(@task.project) %>
+<%= can?(:destroy, @task) ? link_to('Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' }) : '' %>
 
+<h4>Task Description</h4>
 <%= sanitize(@task.html_parsed_description.html_safe,
              tags: safe_tags, attributes: safe_attributes) %>
