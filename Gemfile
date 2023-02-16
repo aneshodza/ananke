@@ -77,18 +77,12 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'figaro', '~> 1.2'
-
-gem 'brakeman', '~> 5.4'
-
-gem 'devise', '~> 4.8'
-
-gem 'faker', '~> 3.1'
-
-gem "nilify_blanks", "~> 1.4"
-
-gem "rails-controller-testing", "~> 1.0"
-
-gem "cancancan", "~> 3.4"
-
-gem "commonmarker", "~> 0.23.8"
+gem 'figaro'
+gem 'brakeman'
+gem 'devise'
+gem 'faker'
+gem "nilify_blanks"
+gem "rails-controller-testing"
+gem "cancancan"
+gem "commonmarker"
+gem 'aws-sdk-s3'

@@ -25,6 +25,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers, type: :model
 
   config.include FactoryBot::Syntax::Methods
 
@@ -60,4 +61,9 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+def test_image_url(uid)
+  "https://#{ENV.fetch('AWS_S3_BUCKET', nil)}.s3.#{ENV.fetch('AWS_REGION', nil)}" \
+    ".amazonaws.com/74aa4460b085465763dbff0269814b0d9d819ff7cf727b08b6487749411cfc90-#{uid}"
 end
