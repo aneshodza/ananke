@@ -1,7 +1,11 @@
 PORT: 3000
 REGISTERABLE: 'false'
+AWS_REGION: "eu-central-1"
+AWS_ACCESS_KEY_ID: "YOUR_AWS_ACCESS_KEY_ID"
+AWS_SECRET_ACCESS_KEY: "YOUR_AWS_SECRET_ACCESS_KEY"
+AWS_S3_BUCKET: "ananke-develop"
 
 test:
   # SELENIUM_DRIVER: 'selenium_chrome'
   SELENUM_DRIVER: 'selenium_chrome_headless'
-  REGISTERABLE: 'true' # So we can keep testing the register function
+  REGISTERABLE: 'true' # So we can keep testing the register function, chaning breaks specs
