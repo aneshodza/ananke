@@ -30,7 +30,6 @@
     .then(data => {
       const newText = `\n\n![Alt text here](${data.link})\n\n`;
       textField.value += newText;
-      console.log('uploaded');
     })
     .catch(error => {
       console.error('Error:', error);
