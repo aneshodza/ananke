@@ -72,3 +72,13 @@
         margin-left: 5px;
     }
 }
+
+.markdown-utils {
+    .bi-upload {
+        cursor: pointer;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+}

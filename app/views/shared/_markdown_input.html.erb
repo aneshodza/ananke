@@ -1,11 +1,18 @@
-<div class="form-group">
+<div class="form-group markdown-utils">
   <%= f.label field %>
-  <%= f.file_field field, class: "form-control", id: "file-field" %>
+  <br />
+  <div>
+    <%= label_tag :file do %>
+      <i class="bi bi-upload" id="file-label">
+      </i>
+    <% end %>
+    <%= file_field_tag :file, class: "d-none" %>
+  </div>
   <%= f.text_area field, class: "form-control", id: "text-field" %>
 </div>
 
 <script defer>
-  const fileField = document.getElementById('file-field');
+  const fileField = document.getElementById('file');
   const textField = document.getElementById('text-field');
   fileField.addEventListener('change', () => {
     const file = fileField.files[0];
@@ -23,6 +30,7 @@
     .then(data => {
       const newText = `\n\n![Alt text here](${data.link})\n\n`;
       textField.value += newText;
+      console.log('uploaded');
     })
     .catch(error => {
       console.error('Error:', error);
