@@ -18,5 +18,31 @@ RSpec.describe "Markdown write window", type: :system, js: true do
       page.find('[type="submit"]').click
       expect(page).to have_css("img[src*=\"#{test_image_url}\"]")
     end
+
+    it "can't upload a non-image file" do
+      file_input = page.find('input[type="file"]', visible: false)
+      file_input.execute_script("this.style.display='block';")
+      file_input.set(Rails.root.join('spec', 'fixtures', 'files', 'test_file.pdf').to_s)
+      sleep 0.1
+      page.find('[type="submit"]').click
+      expect(page).not_to have_css("img[src*=\"#{test_image_url}\"]")
+    end
+
+    it "can upload another image after saving" do
+      file_input = page.find('input[type="file"]', visible: false)
+      file_input.execute_script("this.style.display='block';")
+      file_input.set(Rails.root.join('spec', 'fixtures', 'files', 'test_image.png').to_s)
+      sleep 0.1
+      page.find('[type="submit"]').click
+      expect(page).to have_css("img[src*=\"#{test_image_url}\"]")
+
+      visit edit_task_path(task)
+      file_input = page.find('input[type="file"]', visible: false)
+      file_input.execute_script("this.style.display='block';")
+      file_input.set(Rails.root.join('spec', 'fixtures', 'files', 'test_image.png').to_s)
+      sleep 0.1
+      page.find('[type="submit"]').click
+      expect(page).to have_css("img[src*=\"#{test_image_url}\"]", count: 2)
+    end
   end
 end

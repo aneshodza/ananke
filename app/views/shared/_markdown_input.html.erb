@@ -12,9 +12,14 @@
 </div>
 
 <script defer>
-  const fileField = document.getElementById('file');
-  const textField = document.getElementById('text-field');
-  fileField.addEventListener('change', () => {
+  if (window.fileField) {
+    window.fileField = document.getElementById('file');
+    window.textField = document.getElementById('text-field');  
+  } else {
+    var fileField = document.getElementById('file');
+    var textField = document.getElementById('text-field');
+  }
+  window.fileField.addEventListener('change', () => {
     const file = fileField.files[0];
     const formData = new FormData();
     formData.append('file', file);
