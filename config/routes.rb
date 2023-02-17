@@ -21,4 +21,7 @@ Rails.application.routes.draw do
 
   get 'users', to: 'users#index'
   get 'my-tasks', to: 'users#my_tasks', as: 'my_tasks'
+
+  # If {class}_md_upload is called, try to call the upload function on that class
+  post 'md_upload', to: 'markdown_image_upload#upload', as: 'md_upload'
 end
