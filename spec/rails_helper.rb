@@ -63,7 +63,7 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-def test_image_url(uid)
+def test_image_url
   "https://#{ENV.fetch('AWS_S3_BUCKET', nil)}.s3.#{ENV.fetch('AWS_REGION', nil)}" \
-    ".amazonaws.com/74aa4460b085465763dbff0269814b0d9d819ff7cf727b08b6487749411cfc90-#{uid}"
+    ".amazonaws.com/74aa4460b085465763dbff0269814b0d9d819ff7cf727b08b6487749411cfc90"
 end

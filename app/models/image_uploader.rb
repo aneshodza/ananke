@@ -3,9 +3,8 @@
 class ImageUploader
   attr_accessor :file, :b64file
 
-  def initialize(file, uid = ('a'..'z').to_a.sample(8).join)
+  def initialize(file)
     @file = file
-    @uid = uid
     @b64file = @file.tempfile.read.dup
   end
 
@@ -45,6 +44,6 @@ class ImageUploader
   end
 
   def digest
-    "#{Digest::SHA256.hexdigest(@b64file)}-#{@uid}"
+    "#{Digest::SHA256.hexdigest(@b64file)}"
   end
 end
