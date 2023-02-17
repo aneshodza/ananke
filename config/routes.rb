@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 
   get 'users', to: 'users#index'
   get 'my-tasks', to: 'users#my_tasks', as: 'my_tasks'
+
+  post 'md_upload', to: 'markdown_utils#upload', as: 'md_upload'
 end

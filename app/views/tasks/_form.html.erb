@@ -9,13 +9,10 @@
       <%= f.select :assigned_user_id,
         User.all.collect { |u| ["#{u.first_name} #{u.last_name}", u.id] },
         { include_blank: false }, selected: @task.assigned_user_id || current_user.id,
-        class: "form-control"
+        class: "form-control mb-2"
       %>
     </div>
-    <div class="form-group">
-      <%= f.label :description %>
-      <%= f.text_area :description, class: "form-control" %>
-    </div>
+    <%= render "shared/markdown_input", f: f, field: :description %>
     <%= f.hidden_field :project_id, value: @task.project_id %>
     <%= f.hidden_field :creator_id, value: current_user.id %>
     <%= f.submit submit_text, class: "btn btn-primary" %>

@@ -64,3 +64,21 @@
         border: 1px solid #000;
     }
 }
+
+.markdown {
+    img {
+        max-width: calc(100% - 10px);
+        height: auto;
+        margin-left: 5px;
+    }
+}
+
+.markdown-utils {
+    .bi-upload {
+        cursor: pointer;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+}

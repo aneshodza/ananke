@@ -1,0 +1,38 @@
+<div class="form-group markdown-utils">
+  <%= f.label field %>
+  <br />
+  <div>
+    <%= label_tag :file do %>
+      <i class="bi bi-upload" id="file-label">
+      </i>
+    <% end %>
+    <%= file_field_tag :file, class: "d-none" %>
+  </div>
+  <%= f.text_area field, class: "form-control", id: "text-field" %>
+</div>
+
+<script defer>
+  const fileField = document.getElementById('file');
+  const textField = document.getElementById('text-field');
+  fileField.addEventListener('change', () => {
+    const file = fileField.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch("<%= md_upload_path %>", {
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': '<%= session[:_csrf_token] %>'
+      },
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      const newText = `\n\n![Alt text here](${data.link})\n\n`;
+      textField.value += newText;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });
+</script>
