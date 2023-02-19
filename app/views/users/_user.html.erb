@@ -1,10 +1,11 @@
 <tr class="user-list-row">
   <td scope="row" class="pfp-icon">
     <% if user.pfp_url.nil? %>
-      <%= image_tag "default_pfp.png" %></th>
-  <% else %>
-    <img src="<%= user.pfp_url %>" alt="pfp" class="pfp">
-  <% end %>
+      <%= image_tag "default_pfp.png" %>
+    <% else %>
+      <img src="<%= user.pfp_url %>" alt="pfp" class="pfp">
+    <% end %>
+  </td>
   <td><%= "#{user.first_name} #{user.last_name}" %></td>
   <% hide_email ||= false %>
   <% unless hide_email %>

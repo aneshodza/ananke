@@ -16,6 +16,7 @@ class Ability
     can [:update, :destroy], Comment, user_id: user.id
 
     can [:read, :my_tasks], User
+    can [:update], User, id: user.id
 
     return unless user.admin?
 
