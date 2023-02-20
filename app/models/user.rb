@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum role: { user: 0, admin: 1 }
+
+  has_many :time_units
 end
