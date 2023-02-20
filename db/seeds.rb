@@ -10,3 +10,9 @@ Task.create!(name: 'Task 2', project: project, creator: user, description: '**Ip
 
 Comment.create!(content: '### Comment 1', user: user, task: Task.first)
 Comment.create!(content: '### Comment 2', user: user, task: Task.first)
+
+TimeUnit.create!(user: user, task: Task.first, start_time: Time.now - 1.hour,
+                 end_time: Time.now, description: 'I did something')
+TimeUnit.create!(user: user, task: Task.first, start_time: Time.now - 2.hours,
+                 end_time: Time.now - 1.hour, description: 'I did something else')
+TimeUnit.create!(user: user, task: Task.first, start_time: Time.now - 15.minutes)

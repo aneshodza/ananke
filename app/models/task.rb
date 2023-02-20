@@ -6,6 +6,7 @@ class Task < ApplicationRecord
 
   has_one :project_owner, through: :project
   has_many :comments, dependent: :destroy
+  has_many :time_units
 
   validates :name, presence: true
   validates :creator, presence: true

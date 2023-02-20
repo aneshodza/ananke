@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :tasks
   resources :comments
+  resources :time_units, only: %i[index edit update create destroy]
 
   devise_for :users,
              path: '',

@@ -1,0 +1,29 @@
+<table class="table task-table">
+  <thead>
+    <tr>
+      <th scope="col">Task id</th>
+      <th scope="col">Time</th>
+      <th scope="col">Description</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% time_units.each_with_index do |time_unit, idx| %>
+      <tr class="user-list-row">
+        <td>
+          <span style="color: red"><%= "##{time_unit.task_id}" %></span>
+          <%= " #{time_unit.task.name}" %>
+        </td>
+        <td>
+          <%= "#{time_unit.start_time.to_fs(:time)}-#{time_unit.end_time.to_fs(:time)}" %>
+        </td>
+        <td><%= time_unit.description.truncate(20, separator: '...') %></td>
+        <td class="actions">
+          <%= button_to time_unit_path(time_unit), method: :delete do %>
+            <i class="bi bi-trash-fill"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

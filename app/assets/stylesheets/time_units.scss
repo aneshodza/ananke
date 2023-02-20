@@ -1,0 +1,41 @@
+.timer-form {
+    margin-top: 30px !important;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+
+    input:not([type="submit"]) {
+        width: 100%;
+    }
+
+    h1, h2 {
+        text-align: center;
+        width: 100%;
+    }
+
+    .timer-date-picker {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        div {
+            width: 45%;
+        }
+        input {
+            width: 100%;
+        }
+    }
+
+    .actions {
+        margin-top: 10px !important;
+    }
+
+    .other-inputs {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        div {
+            width: 45%;
+        }
+    }
+}

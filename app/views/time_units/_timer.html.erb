@@ -1,0 +1,78 @@
+<%= form_with model: my_unended_time, html: { class: 'timer-form' }, url: time_units_path,
+  method: :post do |f| %>
+  <h1>Time tracker</h1>
+  <h2 id="timer">00:00:00</h2>
+  <div class="other-inputs">
+    <div>
+      <%= f.label :task_id, "Task" %><br />
+      <%= f.number_field :task_id %>
+    </div>
+    <div>
+      <%= f.label :description, "Description" %><br />
+      <%= f.text_field :description %>
+    </div>
+  </div>
+  <div class="timer-date-picker">
+    <div>
+      <%= f.label :start_time, "From" %><br />
+      <%= f.datetime_local_field :start_time, id: 'timer-start' %>
+    </div>
+    <div>
+      <%= f.label :end_time, "To" %><br />
+      <%= f.datetime_local_field :end_time, id: 'timer-end' %>
+    </div>
+  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :id, value: @my_unended_time.id %>
+  <div class="actions">
+    <%= f.submit "Stop" %>
+  </div>
+<% end %>
+
+<script defer>
+  if (window.timerField) {
+    window.timerField = document.getElementById('timer');
+    window.startTimeField = document.getElementById('timer-start');
+    window.startTime = new Date(window.startTimeField.value)
+    window.endTimeField = document.getElementById('timer-end');
+    window.endTime = new Date(window.endTimeField.value)
+  } else {
+    var timerField = document.getElementById('timer');
+    var startTimeField = document.getElementById('timer-start');
+    var startTime = new Date(window.startTimeField.value)
+    var endTimeField = document.getElementById('timer-end');
+    var endTime = new Date(window.endTimeField.value)
+  }
+  setTimer()
+
+  startTimeField.addEventListener('change', () => {
+    startTime = new Date(startTimeField.value)
+  });
+
+  endTimeField.addEventListener('change', () => {
+    endTime = new Date(endTimeField.value)
+  });
+
+  function setTimer() {
+    let now
+    if (endTimeField.value) {
+      now = endTime
+    } else {
+      now = new Date()
+    }
+    if (now < startTime) {
+      timerField.innerText = 'Negative time?'
+      return
+    }
+    const diff = now - startTime;
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    let finalText = `${hours.toString().padStart(2, '0')}:`;
+    finalText += `${(minutes % 60).toString().padStart(2, '0')}:`;
+    finalText += `${(seconds % 60).toString().padStart(2, '0')}`;
+    timerField.innerText = finalText
+  }
+
+  setInterval(() => setTimer(), 1000);
+</script>
