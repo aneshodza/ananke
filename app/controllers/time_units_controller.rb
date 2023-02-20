@@ -11,19 +11,6 @@ class TimeUnitsController < ApplicationController
     end
   end
 
-  def edit
-    @time_unit = TimeUnit.find(params[:id])
-  end
-
-  def update
-    @time_unit = TimeUnit.find(params[:id])
-    if @time_unit.update(time_unit_params)
-      redirect_to time_units_path
-    else
-      render :edit
-    end
-  end
-
   def create
     @time_unit = TimeUnit.find(time_unit_params[:id])
     @time_unit.end_time = Time.now if @time_unit.end_time.nil?
@@ -32,7 +19,9 @@ class TimeUnitsController < ApplicationController
     if @time_unit.save!
       flash[:notice] = 'Time unit was successfully created.'
     else
+      # :nocov:
       flash[:notice] = 'Time unit was not created.'
+      # :nocov:
     end
     redirect_to time_units_path
   end

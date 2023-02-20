@@ -19,9 +19,6 @@
         </td>
         <td><%= time_unit.description.truncate(20, separator: '...') %></td>
         <td class="actions">
-          <%= link_to edit_time_unit_path(time_unit) do %>
-            <i class="bi bi-pencil-square"></i>
-          <% end %>
           <%= button_to time_unit_path(time_unit), method: :delete do %>
             <i class="bi bi-trash-fill"></i>
           <% end %>
