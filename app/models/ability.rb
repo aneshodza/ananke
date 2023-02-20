@@ -18,6 +18,9 @@ class Ability
     can [:read, :my_tasks], User
     can [:update], User, id: user.id
 
+    can [:read], TimeUnit
+    can [:update, :destroy, :create], TimeUnit, user_id: user.id
+
     return unless user.admin?
 
     can [:read, :update, :create, :destroy], Project

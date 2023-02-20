@@ -1,9 +1,12 @@
 class TimeUnitsController < ApplicationController
+  authorize_resource
+
   def index
     @time_units = TimeUnit.my_ended_time(current_user)
     @my_unended_time = TimeUnit.where(user: current_user).where(end_time: nil).first
     if @my_unended_time.nil?
-      @my_unended_time = TimeUnit.new(user: current_user, start_time: Time.now)
+      @my_unended_time = TimeUnit.new(user: current_user, 
+                                      start_time: Time.now.beginning_of_minute)
       @my_unended_time.save!
     end
   end
