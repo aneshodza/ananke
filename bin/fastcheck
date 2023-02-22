@@ -24,3 +24,10 @@ fi
 check
 bundle exec brakeman -q -z --no-summary --no-pager
 check
+
+if [ "$passing" = true ]; then
+	echo "All checks passed"
+else
+	echo "Some checks failed"
+	exit 1
+fi
