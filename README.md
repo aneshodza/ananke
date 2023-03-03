@@ -40,6 +40,19 @@ Every project has tasks. Those can be e.g. "Implement proper CORS rules". Every 
 ### CI/CD
 This project has a 100% test coverage, with a [public CI configured on semaphoreci](https://aneshodza.semaphoreci.com/projects/ananke). If you are interested in contributing, read the next chapter.
 
+### Tech stack
+The project is based on a variaty of different technologies, which are used in componation with eachother.  
+
+#### Web technologies
+The used web technology is Ruby on Rails in an MVC architecture, but also has stimulus to help with hydrating the staticaly rendered pages. Rails is directly connected to a postgresql database, but that can be changed depending on your preferences. AWS is primarily used to store images in an s3 container.  
+
+#### Maintenance tools
+The project uses semaphoreci, rspec and depfu to keep the code maintainable over a long period of time. Semaphore is the used CI tool, to execute tests automatically on the repository. Depfu keeps all the dependencies up to date, by creating PRs bi-weekly, like for example [here](https://github.com/aneshodza/ananke/pull/30). Finally: We use rspec (in combination with capybara) to write tests. The coverage is 100%
+
+#### Hosting
+This repository isn't currently hosted, because everyone is supposed to host their own instances, but I strongly suggest to do it on Heroku. I think there you get the best bang for your buck when it comes to Rails.
+![Image of tech stack](https://user-images.githubusercontent.com/75726773/222673730-a3091d13-7e53-4535-b19d-a48a63360aa9.png)
+
 ### Contributing/Forking
 This project is open source and accepts PRs. Just make sure contributions pass the CI. For more specialized versions, users are expected to create their own forks. Interesting & good features are obviously welcome.  
 **Important** is to keep in mind that this project is under a **GNU** license, which forces any forks to be under the same license. More about this in the next chapter
