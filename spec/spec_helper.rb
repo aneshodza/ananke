@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require 'simplecov'
+require "buildkite/test_collector"
+
+Buildkite::TestCollector.configure(hook: :rspec)
 
 SimpleCov.start 'rails' do
   add_filter 'app/channels/application_cable/channel.rb'
